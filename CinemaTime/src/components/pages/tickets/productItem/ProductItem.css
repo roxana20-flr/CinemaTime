@@ -1,0 +1,22 @@
+.ProjectsMyWork {
+    display: inline-grid;
+    border: solid;
+  }
+        
+     
+      .ProjectsMyWork {
+          width: 250px;
+          height: 350px;
+          aspect-ratio: 1;
+          grid-gap: 10px;
+          box-shadow: -2px 0px 2px 5px rgba(255,255,255,0.19);
+          margin: 20px;
+        }
+        .ProjectsMyWork *{
+          font-size: 1.5vw;
+          font-family: "Lucida Handwriting", cursive;
+        }
+  
+  .ProjectsMyWorkText{
+      color: black;
+  }

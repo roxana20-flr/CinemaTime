@@ -1,13 +1,13 @@
 import React from "react";
-import { products } from "../TicketData";
+import './ProductItem.css';
 
 const ProductItem = (props) => {
-  const { product } = props;
+  const { product, onAdd } = props;
   return (
-    <div className=" column is-half">
-      <div className="box">
-        <div className="media">
-          <div className="media-left">
+    <div className="ProjectsMyWorkText  ProjectsMyWork">
+      <div >
+        <div >
+          <div >
             <figure className="image is-64x64">
               <img
                 src="https://bulma.io/images/placeholders/128x128.png"
@@ -15,27 +15,20 @@ const ProductItem = (props) => {
               />
             </figure>
           </div>
-          <div className="media-content">
+          <div >
             <b style={{ textTransform: "capitalize" }}>
               {product.name}{" "}
-              <span className="tag is-primary">${product.price}</span>
+              <span >{product.price} lei</span>
             </b>
             <div>{product.shortDesc}</div>
             {product.stock > 0 ? (
               <small>{product.stock + " Available"}</small>
             ) : (
-              <small className="has-text-danger">Out Of Stock</small>
+              <small >Out Of Stock</small>
             )}
-            <div className="is-clearfix">
+            <div >
               <button
-                className="button is-small is-outlined is-primary   is-pulled-right"
-                // onClick={() =>
-                //   props.addToCart({
-                //     id: products.name,
-                //     products,
-                //     amount: 1
-                //   })
-                // }
+              onClick={() => onAdd(product)}
               >
                 Add to Cart
               </button>

@@ -16,10 +16,10 @@ const Footer = () => {
         <div className="footer">
                     <div className="FooterMyWorkLink  FooterMyWork"  >
                         <a href="mailto: savuroxanaflorina20@yahoo.com " className="FooterMyWorkLinkCode" >
-                        savuroxanaflorina20@yahoo.com
+                        adresa-email@yahoo.com
                         </a>
                         <a href="tel:0753814032" className="FooterMyWorkLinkCode" >
-                            0753.814.032
+                            0753.123.456
                         </a>
                     </div>  
 

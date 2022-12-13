@@ -1,39 +1,60 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Tickets.css";
 import ProductItem from "./productItem/ProductItem";
-import withContext from "../../../withContext";
-import { products } from "./TicketData";
+
+import PropTypes from 'prop-types';
   
-const Tickets = () => {
-  // const { products } = props.context;
+const Tickets = ( props ) => {
+  const { products, onAdd } = props;
+  const imagePerRow = 16;
+  const [next, setNext] = useState(imagePerRow);
+  const handleMoreImage = () => {
+    setNext(next + imagePerRow);
+  };
+
+
   return (
     <div className="Tickets">
-     <div className="hero is-primary">
-        <div className="hero-body container">
+     <div >
+        <div >
           <h4 className="title">Our Products</h4>
         </div>
       </div>
       <br />
-      <div className="container">
-        <div className="column columns is-multiline">
+      <div >
+        <div className="gap-y-4 flex flex-wrap justify-center">
           {products && products.length ? (
-            products.map((product, index) => (
+          products.slice(0, next).map((product, index) => (
               <ProductItem
-                product={product}
-                key={index}
-                // addToCart={products.context.addToCart}
+              product={product}
+              key={index}
+              onAdd={onAdd}
               />
-            ))
+            )) 
           ) : (
-            <div className="column">
+            <div >
               <span className="title has-text-grey-light">
                 No products found!
               </span>
             </div>
           )}
+          {next < products.length && (
+            <div>
+          <button
+            className="mt-4"
+            onClick={handleMoreImage}
+          >
+            Load more
+          </button>
+          </div>
+        )}
         </div>
       </div>
     </div>  
   );
 };
-export default withContext(Tickets);
+export default Tickets;
+
+Tickets.propTypes = {
+  onAddToCart: PropTypes.func,
+};
