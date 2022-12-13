@@ -3,14 +3,21 @@ import './App.css';
 import MainPage from "./components/pages/main_page/MainPage";
 import Offers from "./components/pages/offers/Offers";
 import Tickets from './components/pages/tickets/Tickets';
+import Cart from './components/pages/cart/Cart';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import Context from "./Context";
+import  produse  from './components/pages/tickets/TicketData';
+import data from './data';
+// import commerce from './lib/Commerce';
 
-class App extends Component {
+// class App  extends Component {
+  function App () {
+    
+  
   // constructor(props) {
   //   super(props);
   //   this.state = {
@@ -25,7 +32,7 @@ class App extends Component {
   //   let user = localStorage.getItem("user");
   //   let cart = localStorage.getItem("cart");
 
-  //   const products = await axios.get('http://localhost:3001/tickets');
+  //   const products = await axios.get('http://localhost:3000/#/tickets');
   //   user = user ? JSON.parse(user) : null;
   //   cart = cart? JSON.parse(cart) : {};
 
@@ -34,7 +41,7 @@ class App extends Component {
 
   // login = async (email, password) => {
   //   const res = await axios.post(
-  //     'http://localhost:3001/login',
+  //     'http://localhost:3000/login',
   //     { email, password },
   //   ).catch((res) => {
   //     return { status: 401, message: 'Unauthorized' }
@@ -108,7 +115,7 @@ class App extends Component {
   //       p.stock = p.stock - cart[p.name].amount;
 
   //       axios.put(
-  //         `http://localhost:3001/tickets/${p.id}`,
+  //         `http://localhost:3000/#/tickets/${p.id}`,
   //         { ...p },
   //       )
   //     }
@@ -119,7 +126,110 @@ class App extends Component {
   //   this.clearCart();
   // };
 
-  render() {
+
+  // ALT EXEMPLU -----------
+
+  // const [merchant, setMerchant] = useState({});
+  // const [products, setProducts] = useState([]);
+  // const [cart, setCart] = useState({})
+
+
+  // useEffect(() => {
+  //   fetchMerchantDetails();
+  //   fetchProducts();
+  //   fetchCart();
+  // }, []);
+
+ 
+  //  const fetchMerchantDetails = () => {
+  //   commerce.merchants.about().then((merchant) => {
+  //     setMerchant(merchant);
+  //   }).catch((error) => {
+  //     console.log('There was an error fetching the merchant details', error)
+  //   });
+  // }
+
+  
+  // const fetchProducts = () => {
+  //   commerce.products.list().then((products) => {
+  //     setProducts(products.data);
+  //   }).catch((error) => {
+  //     console.log('There was an error fetching the products', error)
+  //   });
+  // }
+
+
+  // const fetchCart = () => {
+  //   commerce.cart.retrieve().then((cart) => {
+  //     setCart(cart);
+  //   }).catch((error) => {
+  //     console.log('There was an error fetching the cart', error);
+  //   });
+  // }
+
+  //  const handleAddToCart = (productId, quantity) => {
+  //   commerce.cart.add(productId, quantity).then((item) => {
+  //     setCart(item.cart);
+  //   }).catch((error) => {
+  //     console.error('There was an error adding the item to the cart', error);
+  //   });
+  // }
+
+  
+  // const handleRemoveFromCart = (lineItemId) => {
+  //   commerce.cart.remove(lineItemId).then((resp) => {
+  //     setCart(resp.cart);
+  //   }).catch((error) => {
+  //     console.error('There was an error removing the item from the cart', error);
+  //   });
+  // }
+  
+ 
+  // const handleUpdateCartQty = (lineItemId, quantity) => {
+  //   commerce.cart.update(lineItemId, { quantity }).then((resp) => {
+  //     setCart(resp.cart);
+  //   }).catch((error) => {
+  //     console.log('There was an error updating the cart items', error);
+  //   });
+  // }
+
+  
+  // const handleEmptyCart = () => {
+  //   commerce.cart.empty().then((resp) => {
+  //     setCart(resp.cart);
+  //   }).catch((error) => {
+  //     console.error('There was an error emptying the cart', error);
+  //   });
+  // }
+
+  const { products } = data;
+  const [cartItems, setCartItems] = useState([]);
+  const onAdd = (product) => {
+    const exist = cartItems.find((x) => x.id === product.id);
+    if (exist) {
+      setCartItems(
+        cartItems.map((x) =>
+          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { ...product, qty: 1 }]);
+    }
+  };
+  const onRemove = (product) => {
+    const exist = cartItems.find((x) => x.id === product.id);
+    if (exist.qty === 1) {
+      setCartItems(cartItems.filter((x) => x.id !== product.id));
+    } else {
+      setCartItems(
+        cartItems.map((x) =>
+          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
+        )
+      );
+    }
+  };
+
+  // render() {
     return (
     <div className="App">
       {/* <Context.Provider
@@ -133,19 +243,23 @@ class App extends Component {
           checkout: this.checkout
         }}
       > */}
-      <Router ref={this.routerRef}>
+       <Router > {/*//ref={this.routerRef} */}
         <Header />
         <Routes>
           <Route path='/' exact element={<MainPage />} />
           <Route path='/offers' element={<Offers />} />
-          <Route path='/tickets' element={<Tickets />} />
+          <Route path='/tickets' element={<Tickets products={products} onAdd={onAdd}/>} />
+          <Route path='/cart' element={<Cart 
+          cartItems={cartItems}
+          onAdd={onAdd}
+          onRemove={onRemove}/>} />
         </Routes>
         <Footer/>
       </Router>
       {/* </Context.Provider> */}
     </div>
   );
-    }
+    //  }
 }
 
 export default App;

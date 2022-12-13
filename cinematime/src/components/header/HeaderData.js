@@ -15,5 +15,10 @@ export const HeaderData = [
       title: 'TICKETS',
       path: '/tickets',
       cName: 'nav-text'
+    },
+    {
+      title: 'CART',
+      path: '/cart',
+      cName: 'nav-text'
     }
   ];
