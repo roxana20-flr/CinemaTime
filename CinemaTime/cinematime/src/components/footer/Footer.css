@@ -1,0 +1,107 @@
+
+
+    .FooterMyWork {
+        display: inline-grid;
+      }
+            
+         
+          .FooterMyWork {
+              width: 200px;
+              height: 70px;
+              aspect-ratio: 1;
+              grid-gap: 0px;
+              /* box-shadow: -2px 0px 2px 5px rgba(255,255,255,0.19); */
+              margin: 10px;
+            }
+            .FooterMyWork *{
+              font-size: 30px;
+              font-family: "Lucida Handwriting", cursive;
+            }
+      
+      .FooterMyWorkText{
+          color: white;
+          font-family: "Lucida Handwriting", cursive;
+      }
+
+      .FooterMyWorkLink{
+        margin-top: 30px;
+      }
+      
+      .footerMyWorkText {
+        text-align: center;
+        margin-left: 10px;
+        margin-bottom: 0;
+      }
+      
+     
+      
+      .FooterMyWorkLinkCode{
+        font-family: "Lucida Handwriting", cursive;
+        text-align: center;
+        /* padding-right: 5px; */
+        text-decoration: none;
+        font-size: 15px;
+        font-family:Arial, Helvetica, sans-serif;
+        color: #E4C17C;
+        
+      }
+      
+      
+      .FooterMyWorktext{
+        font-size: 30px;
+        font-family: "Lucida Handwriting", cursive;
+        background-color: black;
+        color: white;
+      }
+
+      .socialContainerFooter{
+        margin-bottom: 30px;
+        /* position: absolute;
+        top: 80%;
+        left: 42%; */
+    }
+      
+      a.socialFooter {
+        margin: 0 1rem;
+        transition: transform 250ms;
+        display: inline-block;
+      }
+      
+      a.socialFooter:hover {
+        transform: translateY(-2px);
+      }
+      
+      a.linkedinFooter {
+        color: #E4C17C;
+      }
+      
+      a.facebookFooter {
+        color: #E4C17C;
+      }
+      
+      
+      a.instagramFooter {
+        color: #E4C17C;
+      }
+
+      hr{
+        background-color:grey;
+        border: 0.5px  grey;
+        height: 0.5px;
+      }
+
+      
+
+      @media only screen and (max-width: 750px) {
+        .FooterMyWork {
+            width: 400px;
+        }
+      }
+
+      @media only screen and (min-width: 751px) {
+
+      .footer{
+        margin-top:50px;
+        margin-bottom:50px;
+    }
+}

@@ -1,0 +1,37 @@
+ .nav-text {
+    /* display: flex; */
+    padding: 8px 60px 8px 30px;
+    /* list-style: none; */
+    height: 60px;
+  }
+
+  table, th, td {
+    border:1px solid black;
+  }
+  
+  .nav-text a {
+    text-decoration: none;
+    font-family: "Lucida Handwriting", cursive;
+    color: black;
+    font-size: 2vw;
+    /* width: 95%;
+    height: 100%; */
+    padding: 0 16px;
+    border-radius: 4px;
+  }
+
+  .table{
+    table-layout:fixed;
+    width:100%;
+
+  }
+
+  /* td  {
+    border: solid black;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    margin-bottom: 20px
+  } */
+
+
