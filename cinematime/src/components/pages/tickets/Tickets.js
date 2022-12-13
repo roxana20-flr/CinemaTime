@@ -1,14 +1,10 @@
 import {React, useState} from "react";
 import "./Tickets.css";
 import ProductItem from "./productItem/ProductItem";
-import withContext from "../../../withContext";
-import { products } from "./TicketData";
 
 import PropTypes from 'prop-types';
-// import Button from 'react-bootstrap/Button';
   
 const Tickets = ( props ) => {
-  // const { products} = props;
   const { products, onAdd } = props;
   const imagePerRow = 16;
   const [next, setNext] = useState(imagePerRow);
@@ -16,9 +12,6 @@ const Tickets = ( props ) => {
     setNext(next + imagePerRow);
   };
 
-  // const onAddToCart = () => {
-  //   addToCart();
-  // };
 
   return (
     <div className="Tickets">
@@ -35,7 +28,6 @@ const Tickets = ( props ) => {
               <ProductItem
               product={product}
               key={index}
-              // addToCart={products.context.addToCart}
               onAdd={onAdd}
               />
             )) 

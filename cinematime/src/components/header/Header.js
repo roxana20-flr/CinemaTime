@@ -20,23 +20,6 @@ const Header = () => {
                   </span>
               );
           })}
-
-        {/* <ul className='nav-menu-items' onClick={showSidebar}>
-          <li className='navbar-toggle'>
-            <Link to='#' className='menu-bars-x' >
-            <span className='x'>&times;</span>
-            </Link>
-          </li>
-          {SidebarData.map((item, index) => {
-            return (
-              <li key={index} className={item.cName}>
-                <Link to={item.path}>
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul> */}
       </nav>
     </div>
     <hr/>

@@ -1,5 +1,4 @@
 import React from "react";
-// import SocialFlow from "../main_page/SocialFlow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Footer.css";
 import {

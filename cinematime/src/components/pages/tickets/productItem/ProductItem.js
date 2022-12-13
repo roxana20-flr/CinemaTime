@@ -1,13 +1,8 @@
 import React from "react";
-import { products } from "../TicketData";
 import './ProductItem.css';
 
 const ProductItem = (props) => {
-  // const { product } = props;
   const { product, onAdd } = props;
-  // const handleAddToCart = () => {
-  //   onAddToCart(product.id, 1);
-  // }
   return (
     <div className="ProjectsMyWorkText  ProjectsMyWork">
       <div >
@@ -33,13 +28,6 @@ const ProductItem = (props) => {
             )}
             <div >
               <button
-              //  onClick={() =>
-              //   props.addToCart({
-              //     id: product.name,
-              //     product,
-              //     amount: 1
-              //   })
-              // }
               onClick={() => onAdd(product)}
               >
                 Add to Cart
